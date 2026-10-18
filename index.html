@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar Horizon: Interactive Sandbox</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Visual Simulation Window -->
+        <div class="canvas-container">
+            <canvas id="spaceCanvas"></canvas>
+            <div id="alertOverlay" class="alert-overlay">⚠️ STELLAR FLARE INBOUND ⚠️</div>
+        </div>
+
+        <!-- Telemetry Control Dock -->
+        <div class="control-panel">
+            <h1>🚀 Stellar Horizon</h1>
+            <p class="subtitle">Interactive Physics Sandbox & Hazard Simulator</p>
+
+            <div class="control-group">
+                <h3>Target Destination</h3>
+                <div class="btn-row">
+                    <button id="btn-proxima" class="active" onclick="switchTarget('proxima')">Proxima Centauri b</button>
+                    <button id="btn-trappist" onclick="switchTarget('trappist')">TRAPPIST-1 e</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3>Simulation Calibration</h3>
+                <label>Time Warp (Speed): <span id="val-speed">1x</span></label>
+                <input type="range" id="input-speed" min="0" max="5" step="0.5" value="1" oninput="updateSpeed(this.value)">
+
+                <label>Shield Strength Capacity: <span id="val-shield">100%</span></label>
+                <input type="range" id="input-shield" min="10" max="100" step="5" value="100" oninput="updateShield(this.value)">
+            </div>
+
+            <div class="control-group action-group">
+                <button class="danger-btn" onclick="triggerStellarFlare()">⚡ Trigger Stochastic Flare Event</button>
+            </div>
+
+            <div class="telemetry-display">
+                <h3>📋 System Telemetry</h3>
+                <div class="data-grid">
+                    <div class="data-item"><strong>Planet Name:</strong> <span id="lbl-name">-</span></div>
+                    <div class="data-item"><strong>System Distance:</strong> <span id="lbl-dist">-</span> pc</div>
+                    <div class="data-item"><strong>Surface Gravity:</strong> <span id="lbl-grav">-</span> g</div>
+                    <div class="data-item"><strong>Orbital Period:</strong> <span id="lbl-period">-</span> days</div>
+                    <div class="data-item"><strong>Orbital Radius:</strong> <span id="lbl-axis">-</span> AU</div>
+                    <div class="data-item"><strong>Stellar Temp:</strong> <span id="lbl-steff">-</span> K</div>
+                </div>
+                <div id="simulationLog" class="sim-log">System calibrated. Ready for deployment.</div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
